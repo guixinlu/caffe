@@ -54,7 +54,7 @@ class ColorClassifier(object) :
     start_time = time.time()
     # generate the foreground
     background_removed = remove_background(image_file_path) # background removal
-    skin_removed = skin_detect(image_file_path) # skin removal
+    skin_removed = skin_detect(img) # skin removal
     foreground = cv2.bitwise_and(background_removed, background_removed, mask = skin_removed) # the foreground mask
     skin_percentage = 1 - sum(map(sum, foreground))/1.0/sum(map(sum, background_removed))
     # In case of clothes in skin color.
